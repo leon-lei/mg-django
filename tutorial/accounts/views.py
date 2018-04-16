@@ -9,7 +9,6 @@ from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-@login_required
 def home(request):
     numbers = [1,2,3,4,5]
     name = 'Leon Lei'
@@ -28,7 +27,6 @@ def register(request):
         args = {'form':form}
         return render(request, 'accounts/reg_form.html',args)
 
-@login_required
 def view_profile(request):
     args = {'user': request.user}
     return render(request, 'accounts/profile.html', args)
