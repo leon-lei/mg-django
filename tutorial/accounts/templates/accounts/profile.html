@@ -6,9 +6,10 @@
 
 {% block body %}
 <div class="container">
-    <p>
-        {{ user }}
-        {{ user.last_name }}
-    </p>
+    <h1>Profile</h1>
+    <p>Username: {{ user }}</p>
+    <p>First name: {{ user.first_name }}</p>
+    <p>Last name: {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
 </div>
 {% endblock %}
