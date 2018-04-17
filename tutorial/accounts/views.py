@@ -1,5 +1,3 @@
-
-from django.shortcuts import render, redirect
 from accounts.forms import (
     RegistrationForm, 
     EditProfileForm, 
@@ -8,6 +6,9 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from django.shortcuts import render, redirect
+
 
 def home(request):
     numbers = [1,2,3,4,5]
@@ -20,7 +21,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/account')
+            return redirect(reverse('home'))
     else:
         form = RegistrationForm()
 
@@ -37,7 +38,7 @@ def edit_profile(request):
 
         if form.is_valid():
             form.save()
-            return redirect('/account/profile')
+            return redirect(reverse('view_profile'))
     else:
         form = EditProfileForm(instance=request.user)
         args = {'form': form}
@@ -50,9 +51,9 @@ def change_password(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return redirect('/account/profile')
+            return redirect(reverse('view_profile'))
         else:
-            return redirect('/account/change-password')
+            return redirect(reverse('change_password'))
     else:
         form = PasswordChangeForm(user=request.user)
         args = {'form': form}

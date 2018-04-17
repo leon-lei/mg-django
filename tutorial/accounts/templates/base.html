@@ -24,17 +24,17 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             {% if user.is_authenticated %}
             <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="/account">Home <span class="sr-only">(current)</span></a>
-              <a class="nav-item nav-link" href="/account/logout">Logout</a>
-              <a class="nav-item nav-link" href="/account/profile">Profile</a>
-              <a class="nav-item nav-link" href="/account/profile/edit">Edit Profile</a>
-              <a class="nav-item nav-link" href="/account/change-password">Change Password</a>
-              <a class="nav-item nav-link" href="/account/reset-password">Reset Password</a>
+              <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+              <a class="nav-item nav-link" href="{% url 'view_profile' %}">Profile</a>
+              <a class="nav-item nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+              <a class="nav-item nav-link" href="{% url 'change_password' %}">Change Password</a>
+              <a class="nav-item nav-link" href="{% url 'reset_password' %}">Reset Password</a>
             </div>
             {% else %}
             <div class="navbar-nav navbar-right">
-              <a class="nav-item nav-link" href="/account/login">Login</a>
-              <a class="nav-item nav-link" href="/account/register">Register</a>
+              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
             </div>
             {% endif %}
           </div>
