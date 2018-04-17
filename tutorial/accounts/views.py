@@ -18,7 +18,6 @@ def register(request):
             return redirect(reverse('accounts:home'))
     else:
         form = RegistrationForm()
-
         args = {'form':form}
         return render(request, 'accounts/reg_form.html',args)
 
