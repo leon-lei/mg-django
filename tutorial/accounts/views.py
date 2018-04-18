@@ -9,6 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.shortcuts import render, redirect
 
+def home(request):
+    return render(request, 'accounts/home.html')
 
 def register(request):
     if request.method == 'POST':
@@ -28,7 +30,6 @@ def view_profile(request):
 def edit_profile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
-
         if form.is_valid():
             form.save()
             return redirect(reverse('accounts:view_profile'))
@@ -40,7 +41,6 @@ def edit_profile(request):
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(data=request.POST, user=request.user)
-
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
