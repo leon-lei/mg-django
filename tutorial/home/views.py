@@ -12,8 +12,12 @@ class HomeView(TemplateView):
         form = HomeForm()
         posts = Post.objects.all().order_by('-created')
         users = User.objects.exclude(id=request.user.id)
+        friend = Friend.objects.get(current_user=request.user) # object_get_or_create to account for users without a friend model
+        friends = friend.users.all()
 
-        args = {'form': form, 'posts': posts, 'users': users}
+        args = {
+            'form': form, 'posts': posts, 'users': users, 'friends':friends
+        }
         return render(request, self.template_name, args)
 
     def post(self, request):
@@ -31,9 +35,9 @@ class HomeView(TemplateView):
         return render(request, self.template_name, args)
 
 def change_friends(request, operation, pk):
-    new_friend = User.objects.get(pk=pk)
+    friend = User.objects.get(pk=pk)
     if operation == 'add':
-        Friend.make_friend(request.user, new_friend)
+        Friend.make_friend(request.user, friend)
     elif operation == 'remove':
-        Friend.lose_friend(request.user, new_friend)
+        Friend.lose_friend(request.user, friend)
     return redirect('home:home')
