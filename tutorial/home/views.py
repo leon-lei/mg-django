@@ -12,7 +12,7 @@ class HomeView(TemplateView):
         form = HomeForm()
         posts = Post.objects.all().order_by('-created')
         users = User.objects.exclude(id=request.user.id)
-        friend = Friend.objects.get(current_user=request.user) # object_get_or_create to account for users without a friend model
+        friend = Friend.objects.get(current_user=request.user) # object.get_or_create to account for users without a friend model
         friends = friend.users.all()
 
         args = {
