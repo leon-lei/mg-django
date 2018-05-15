@@ -14,7 +14,8 @@ class UserProfile(models.Model):
     phone = models.IntegerField(default=0)
     image = models.ImageField(upload_to='profile_image', blank=True)
 
-    london = UserProfileManager( )
+    # Uncomment would filter the User Profiles in Admin
+    # london = UserProfileManager()
 
     def __str__(self):
         return self.user.username
