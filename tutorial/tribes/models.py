@@ -11,3 +11,7 @@ class Tribe(models.Model):
 
 class Event(models.Model):
     tribe = models.ForeignKey(Tribe, on_delete=models.DO_NOTHING)
+    location = models.CharField(max_length=250)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='event_image', blank=True)
