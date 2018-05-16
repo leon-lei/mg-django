@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>My Tribes</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Welcome {{ user.first_name }}!</h1>
+    <br>
+    <h2>Create a new Tribe</h2>
+    <button type="submit">New Tribe</button>
+    <br>
+    <h2>Tribes that I belong to</h2>
+</div>
+{% endblock %}
