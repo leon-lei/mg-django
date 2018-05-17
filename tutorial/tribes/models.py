@@ -14,6 +14,7 @@ class Tribe(models.Model):
 
 class Event(models.Model):
     event_name = models.CharField(max_length=250)
+    event_date = models.DateField()
     tribe = models.ForeignKey(Tribe, on_delete=models.DO_NOTHING)
     location = models.CharField(max_length=250)
     created = models.DateTimeField(auto_now_add=True)
