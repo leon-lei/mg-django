@@ -18,7 +18,7 @@ class Event(models.Model):
 class Tribe(models.Model):
     tribe_name = models.CharField(max_length=250)
     chieftain = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    events = models.ManyToManyField(Event)
+    events = models.ManyToManyField(Event, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='tribe_image', blank=True)
