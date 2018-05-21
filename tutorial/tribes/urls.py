@@ -6,5 +6,6 @@ app_name='tribes'
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
-    path('info/<int:pk>/', views.view_info, name='view_info'),
+    path('info/', IndexView.as_view(), name='view_info'),
+    path('info/<int:pk>/', views.view_info, name='view_info_with_pk'),
 ]

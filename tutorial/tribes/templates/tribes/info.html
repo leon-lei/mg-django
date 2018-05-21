@@ -4,10 +4,11 @@
     <title>Tribes</title>
 {% endblock %}
 
-<h1>Info here</h1>>
-
 {% block body %}
 <div class="container-fluid">
-    <h1>Info here</h1>
+    <h1>{{ tribe.tribe_name }}</h1>
+    <h3>{{ tribe.image }}</h3>
+    <h3>Chieftain: {{ tribe.chieftain }}</h3>
+    <h3>Created on: {{ tribe.created }}</h3>
 </div>
 {% endblock %}
