@@ -6,9 +6,18 @@
 
 {% block body %}
 <div class="container-fluid">
+    {% if tribe.image %}
+    <img src="{{ tribe.image.url }}" width="240">
+    {% endif %}
     <h1>{{ tribe.tribe_name }}</h1>
-    <h3>{{ tribe.image }}</h3>
-    <h3>Chieftain: {{ tribe.chieftain }}</h3>
-    <h3>Created on: {{ tribe.created }}</h3>
+    <p><b>Chieftain: </b> {{ tribe.chieftain }}</p>
+    <p><b>Created on: </b> {{ tribe.created }}</p>
+
+    <h3> Events </h3>
+    <ul>
+        {% for event in tribe.event_set.all %}
+            <li>{{ event.event_date }} - {{ event.event_name }}</li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
