@@ -1,5 +1,4 @@
-from django.http import HttpResponse, Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 
 from tribes.models import Tribe
@@ -13,10 +12,7 @@ class IndexView(TemplateView):
         args = {'all_tribes':all_tribes}
         return render(request, self.template_name, args)
 
-def view_info(request, pk):
-    try:
-        tribe = Tribe.objects.get(pk=pk)
-    except Tribe.DoesNotExist:
-        raise Http404('Tribe does not exist')
+def view_info_with_pk(request, pk=None):
+    tribe = get_object_or_404(Tribe, pk=pk)
     args = {'tribe': tribe}
     return render(request, 'tribes/info.html', args)

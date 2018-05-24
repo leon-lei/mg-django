@@ -10,7 +10,7 @@
     {% if all_tribes %}
         <ul>
             {% for tribe in all_tribes %}
-                <li><a href="/tribes/info/{{ tribe.id }}">{{ tribe.tribe_name }}</a></li>
+                <li><a href="{% url 'tribes:view_info_with_pk' pk=tribe.id %}">{{ tribe.tribe_name }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
