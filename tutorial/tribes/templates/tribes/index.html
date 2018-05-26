@@ -16,5 +16,9 @@
     {% else %}
         <h2>No tribes have been created yet!</h2>
     {% endif %}
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
 </div>
 {% endblock %}
