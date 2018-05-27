@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
-
-{% block head %}
-    <title>Tribes</title>
-{% endblock %}
+{% block title %}{{ tribe.tribe_name }}{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
     {% if tribe.image %}
-    <img src="{{ tribe.image.url }}" width="240">
+        <img src="{{ tribe.image.url }}" width="240">
     {% endif %}
     <h1>{{ tribe.tribe_name }}</h1>
     <p><b>Chieftain: </b> {{ tribe.chieftain }}</p>
