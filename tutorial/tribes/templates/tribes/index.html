@@ -11,7 +11,7 @@
             {% for tribe in all_tribes %}
                 <div class="col-sm-4 col-lg-2">
                     <div class="thumbnail">
-                        <a href="{% url 'tribes:view_info_with_pk' pk=tribe.id %}">
+                        <a href="{% url 'tribes:tribe_details' tribe.id %}">
                             <img src={{ tribe.image.url }} class="img-responsive" width="400">
                         </a>
                         <div class="caption">
@@ -19,7 +19,7 @@
                             <h4>{{ tribe.chieftain }}</h4>
 
                              <!-- Tribe Info -->
-                             <a href="{% url 'tribes:view_info_with_pk' pk=tribe.id %}" class="btn btn-primary btn-sm" role="button">Tribe Info</a>
+                             <a href="{% url 'tribes:tribe_details' tribe.id %}" class="btn btn-primary btn-sm" role="button">Tribe Info</a>
 
                             <!-- Delete Tribe -->
                             <form action="{% url 'tribes:delete_tribe' tribe.id %}" method="post" style="display: inline;">

@@ -14,21 +14,22 @@ class IndexView(ListView):
 class DetailView(DetailView):
     model = Tribe
     template_name = 'tribes/info.html'
+    
+def delete_tribe(request, tribe_id):
+    tribe = Tribe.objects.get(pk=tribe_id)
+    tribe.delete()
+    all_tribes = Tribe.objects.all()
+    return render(request, 'tribes/index.html', {'all_tribes': all_tribes})
+
+############################### NOT CURRENTLY USING ###############################
 
 class TemplateIndexView(TemplateView):
-    ### NOT CURRENTLY USING ###
     template_name = 'tribes/index.html'
     
     def get(self, request):
         all_tribes = Tribe.objects.all()
         args = {'all_tribes':all_tribes}
         return render(request, self.template_name, args)
-
-def delete_tribe(request, tribe_id):
-    tribe = Tribe.objects.get(pk=tribe_id)
-    tribe.delete()
-    all_tribes = Tribe.objects.all()
-    return render(request, 'tribes/index.html', {'all_tribes': all_tribes})
 
 def view_info_with_pk(request, pk=None):
     tribe = get_object_or_404(Tribe, pk=pk)

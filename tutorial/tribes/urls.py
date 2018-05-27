@@ -6,7 +6,6 @@ app_name='tribes'
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
-    path('info/', IndexView.as_view(), name='view_info'),
-    path('info/<int:pk>/', DetailView.as_view(), name='view_info_with_pk'),
+    path('<int:pk>/', DetailView.as_view(), name='tribe_details'),
     path('delete_tribe/<int:tribe_id>/', views.delete_tribe, name='delete_tribe')
 ]
