@@ -10,6 +10,9 @@ class Tribe(models.Model):
     updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='tribe_image', blank=True)
 
+    def get_absolute_url(self):
+        return reverse('tribes:tribe-details', kwargs={'pk': self.pk})
+
     def __str__(self):
         return self.tribe_name
 

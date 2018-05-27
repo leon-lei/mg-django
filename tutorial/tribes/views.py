@@ -1,8 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from tribes.models import Tribe
 
+class TribeCreateView(CreateView):
+    model = Tribe
+    fields = ['tribe_name', 'chieftain', 'image']
+
+class TribeDetailView(DetailView):
+    model = Tribe
+    template_name = 'tribes/info.html'
 
 class IndexView(ListView):
     template_name = 'tribes/index.html'
@@ -11,10 +19,6 @@ class IndexView(ListView):
     def get_queryset(self):
         return Tribe.objects.all()
 
-class DetailView(DetailView):
-    model = Tribe
-    template_name = 'tribes/info.html'
-    
 def delete_tribe(request, tribe_id):
     tribe = Tribe.objects.get(pk=tribe_id)
     tribe.delete()
