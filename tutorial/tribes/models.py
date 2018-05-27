@@ -21,7 +21,7 @@ class Event(models.Model):
     tribe = models.ForeignKey(Tribe, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='event_image', blank=True)
+    image = models.ImageField(upload_to='event_image')
 
     def __str__(self):
         return self.event_name
