@@ -16,13 +16,13 @@
                           <a class="text-dark" href="{% url 'tribes:tribe-details' tribe.id %}">{{ tribe.tribe_name }}</a>
                         </h3>
                         <div class="mb-1 text-muted">{{ tribe.created }}</div>
-                        <a href="{% url 'tribes:tribe-details' tribe.id %}">Tribe Details</a>
+                        <strong><a href="{% url 'tribes:tribe-details' tribe.id %}">Tribe Details</a></strong>
                         <!-- Delete Tribe -->
                         <form action="{% url 'tribes:tribe-delete' tribe.id %}" method="post" style="display: inline;">
                             {% csrf_token %}
                             <input type="hidden" name="tribe_id" value="{{ tribe.id }}" />
-                            <button type="submit" class="btn btn-default btn-sm">
-                                <span class="glyphicon glyphicon-trash"></span>
+                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                <i class="fas fa-trash"></i>
                             </button>
                         </form>
                     </div>
