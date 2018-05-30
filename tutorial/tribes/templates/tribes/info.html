@@ -7,6 +7,12 @@
         <img src="{{ tribe.image.url }}" width="240">
     {% endif %}
     <h1>{{ tribe.tribe_name }}</h1>
+    <!-- Update Tribe -->
+    <form action="{% url 'tribes:tribe-update' tribe.id %}" method="GET" style="display: inline;">
+        <button type="submit" class="btn btn-info btn-sm">
+            <i class="fas fa-edit"></i>
+        </button>
+    </form>
     <p><b>Chieftain: </b> {{ tribe.chieftain }}</p>
     <p><b>Created on: </b> {{ tribe.created }}</p>
 
