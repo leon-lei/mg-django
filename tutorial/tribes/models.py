@@ -33,3 +33,15 @@ class Event(models.Model):
 
     class Meta:
         ordering = ('event_date',)
+
+class Org(models.Model):
+    name = models.CharField(max_length=128)
+    members = models.ManyToManyField(UserProfile, through="Membership")
+
+    def __str__(self):
+        return self.name
+
+class Membership(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    org = models.ForeignKey(Org, on_delete=models.CASCADE)
+    date_joined = models.DateField()
