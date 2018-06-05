@@ -1,5 +1,5 @@
 from django.urls import path
-from tribes.views import IndexView, TribeCreate, TribeDetail, TribeDelete, TribeUpdate
+from tribes.views import IndexView, TribeCreate, TribeDetail, TribeDelete, TribeUpdate, OrgCreate, OrgDetail
 from . import views
 
 app_name='tribes'
@@ -10,4 +10,6 @@ urlpatterns = [
     path('tribe/<int:pk>/', TribeUpdate.as_view(), name='tribe-update'),
     path('tribe/<int:pk>/delete/', TribeDelete.as_view(), name='tribe-delete'),
     path('tribe/create/', TribeCreate.as_view(), name='tribe-create'),
+    path('org/<int:pk>/', OrgDetail.as_view(), name='org-details'),
+    path('org/create/', OrgCreate.as_view(), name='org-create'),
 ]

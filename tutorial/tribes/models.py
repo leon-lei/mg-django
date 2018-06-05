@@ -36,12 +36,14 @@ class Event(models.Model):
 
 class Org(models.Model):
     name = models.CharField(max_length=128)
-    members = models.ManyToManyField(UserProfile, through="Membership")
+    captain = models.ForeignKey(UserProfile, related_name='captain', on_delete=models.CASCADE)
+    members = models.ManyToManyField(UserProfile, related_name='members')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='org_image', blank=True)
+
+    def get_absolute_url(self):
+        return reverse('tribes:org-details', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name
-
-class Membership(models.Model):
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    org = models.ForeignKey(Org, on_delete=models.CASCADE)
-    date_joined = models.DateField()

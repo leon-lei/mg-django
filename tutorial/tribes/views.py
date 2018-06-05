@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from tribes.models import Tribe
+from tribes.models import Tribe, Org
 
 class TribeCreate(CreateView):
     model = Tribe
@@ -27,6 +27,14 @@ class IndexView(ListView):
     
     def get_queryset(self):
         return Tribe.objects.all()
+
+class OrgCreate(CreateView):
+    model = Org
+    fields = ['name', 'captain', 'members', 'image']
+
+class OrgDetail(DetailView):
+    model = Org
+    template_name = 'tribes/orginfo.html'
 
 ############################### NOT CURRENTLY USING ###############################
 
