@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}{{ org.name }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>TESTING {{ org.name }}</h1>
+
+    {% if request.user %}
+        <h1>Username:{{ request.user.username }}</h1>
+    {% endif %}
+
+    {% if org.captain %}
+        <h1>Captain:{{ org.captain.user.username }}</h1>
+    {% endif %}
+
+    {% if request.user.username == org.captain.user.username %}
+        <h2>User and captain are the same!</h2>
+    {% endif %}
+
+    <!-- Update Org -->
+    <form action="" method="GET" style="display: inline;">
+        <button type="submit" class="btn btn-info btn-sm">
+            <i class="fas fa-edit"></i>
+        </button>
+    </form>
+    <p><b>Captain: </b> {{ org.captain }}</p>
+
+    <h3> Members </h3>
+    <ul>
+        {% for member in org.members.all %}
+            <li>{{ member }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+<!-- 
+{% if request.user is org.chieftain %}
+{% elif request.user in org.tribesmen %}
+{% else %}
+{% endif %}
+
+{% if user.username is org.chieftain %}
+{% elif user.username in org.tribesmen %}
+{% else %}
+{% endif %} -->

@@ -34,7 +34,11 @@ class OrgCreate(CreateView):
 
 class OrgDetail(DetailView):
     model = Org
-    template_name = 'tribes/orginfo.html'
+    template_name = 'tribes/org_details.html'
+
+class NewOrgDetail(DetailView):
+    model = Org
+    template_name = 'tribes/new_org_details.html'
 
 ############################### NOT CURRENTLY USING ###############################
 
